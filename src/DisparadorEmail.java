@@ -8,12 +8,9 @@
  *
  * @author guest-vuu80z
  */
-public class Cliente1 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-    }
+public interface DisparadorEmail extends java.rmi.Remote {
+    
+    public boolean disparaEmail(Email email) throws java.rmi.RemoteException;
+    
     
 }
