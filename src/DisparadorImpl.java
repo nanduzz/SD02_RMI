@@ -1,6 +1,7 @@
 
 import java.rmi.RemoteException;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +20,9 @@ public class DisparadorImpl extends java.rmi.server.UnicastRemoteObject implemen
     @Override
     public boolean disparaEmail(Email email) throws RemoteException {
         System.out.println("Disparando email" + email.toString());
-        return true;
+
+        //Chance de não enviar o e-mail = 20%
+        return Math.random() > 0.2;
     }
 
 }

@@ -9,8 +9,7 @@
  * @author guest-vuu80z
  */
 public interface DisparadorEmail extends java.rmi.Remote {
-    
+
     public boolean disparaEmail(Email email) throws java.rmi.RemoteException;
-    
-    
+
 }
