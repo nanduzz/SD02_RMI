@@ -12,24 +12,19 @@ import java.rmi.Naming;
  */
 public class Misto {
 
-    public static void main(String[] args) {
+    public Misto() {
+
         try {
             ServidorEmail disparador = (ServidorEmail) Naming.lookup("//127.0.0.1:1099/ServidorEmail");
-            Email email = new Email("fernando_eac@hotmail.com", "oi", "smtp.fernando.com", 587);
-            
-            boolean disparado = disparador.disparaEmail(email);
-            
-            if(disparado){
-                System.out.println("Email disparado com sucesso");
-            }else{
-                System.out.println("Erro ao disparar o email");
-            }
-            
-            
+            FrontEmailImpl frontEnd = new FrontEmailImpl(disparador);
+            Naming.rebind("//127.0.0.1:1099/FrontEndEmail", frontEnd);
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
 
+    public static void main(String[] args) {
+        Misto m = new Misto();
     }
 
 }
