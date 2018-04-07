@@ -6,7 +6,6 @@ import java.rmi.Naming;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author guest-vuu80z
@@ -14,19 +13,16 @@ import java.rmi.Naming;
 public class Server {
 
     public Server() {
-        try{
-            DisparadorEmail disparador = new DisparadorImpl();
+        try {
+            ServidorEmail disparador = new ServidorEmailImpl();
             Naming.rebind("//127.0.0.1:1099/ServidorEmail", disparador);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
-    
-    
-    
+
     public static void main(String[] args) {
         Server s = new Server();
     }
-           
+
 }

@@ -14,7 +14,7 @@ public class Misto {
 
     public static void main(String[] args) {
         try {
-            DisparadorEmail disparador = (DisparadorEmail) Naming.lookup("//127.0.0.1:1099/ServidorEmail");
+            ServidorEmail disparador = (ServidorEmail) Naming.lookup("//127.0.0.1:1099/ServidorEmail");
             Email email = new Email("fernando_eac@hotmail.com", "oi", "smtp.fernando.com", 587);
             
             boolean disparado = disparador.disparaEmail(email);

@@ -29,4 +29,16 @@ public class Email implements Serializable {
         return "Email{" + "email=" + email + ", conteudo=" + conteudo + ", servidorSMTP=" + servidorSMTP + ", portaSMTP=" + portaSMTP + '}';
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getConteudo() {
+        return conteudo;
+    }
+
+    public void leEmail() {
+        System.out.println("Emial:" + this.getConteudo());
+    }
+
 }
