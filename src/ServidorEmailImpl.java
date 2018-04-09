@@ -40,12 +40,6 @@ public class ServidorEmailImpl extends java.rmi.server.UnicastRemoteObject imple
     }
 
     @Override
-    public boolean realizaLogin(String login, String senha) throws RemoteException {
-        return ((login.equals("cliente") && senha.equals("senhacliente")
-                || login.equals("leitor") && senha.equals("senhaleitor")));
-    }
-
-    @Override
     public Email leEmail(String login) throws RemoteException {
         if (!this.hashEmails.containsKey(login) || this.hashEmails.get(login).isEmpty()) {
             return null;

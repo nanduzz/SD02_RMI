@@ -12,8 +12,6 @@ public interface ServidorEmail extends java.rmi.Remote {
 
     public boolean disparaEmail(Email email) throws java.rmi.RemoteException;
 
-    public boolean realizaLogin(String login, String senha) throws java.rmi.RemoteException;
-
     public Email leEmail(String login) throws java.rmi.RemoteException;
 
 }

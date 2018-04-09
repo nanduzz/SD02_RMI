@@ -22,6 +22,12 @@ public class FrontEmailImpl extends java.rmi.server.UnicastRemoteObject implemen
     }
 
     @Override
+    public boolean realizaLogin(String login, String senha) throws RemoteException {
+        return ((login.equals("cliente") && senha.equals("senhacliente")
+                || login.equals("leitor") && senha.equals("senhaleitor")));
+    }
+
+    @Override
     public boolean enviaEmail(String destino, String conteudo) throws RemoteException {
         Email email = new Email(destino, conteudo, "smtp.fernando.com", 587);
         boolean disparado = disparador.disparaEmail(email);
