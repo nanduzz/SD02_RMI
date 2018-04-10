@@ -15,7 +15,5 @@ public interface FrontEndEmail extends java.rmi.Remote {
     public boolean enviaEmail(String destino, String conteudo) throws java.rmi.RemoteException;
 
     public Email leEmail(String login) throws java.rmi.RemoteException;
-;
-;
 
 }
