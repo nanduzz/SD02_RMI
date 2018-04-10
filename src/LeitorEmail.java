@@ -1,5 +1,6 @@
 
-import java.rmi.Naming;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
@@ -12,17 +13,13 @@ import java.util.Scanner;
  *
  * @author guest-vuu80z
  */
-public class LeitorEmail {
-
-    private static FrontEndEmail frontEmail;
+public class LeitorEmail extends ClienteEmail {
 
     public static void main(String[] args) {
         try {
-            frontEmail = (FrontEndEmail) Naming.lookup("//127.0.0.1:1099/FrontEndEmail");
-
-            if (realizaLogin()) {
-                Email email = frontEmail.leEmail("fernando_eac@hotmail.com");
-                email.leEmail();
+            LeitorEmail leitor = new LeitorEmail();
+            if (leitor.realizaLogin()) {
+                leitor.leMultiplesEmails();
             }
 
         } catch (Exception e) {
@@ -30,24 +27,22 @@ public class LeitorEmail {
         }
     }
 
-    public static boolean realizaLogin() throws RemoteException {
-        while (true) {
-            Scanner s = new Scanner(System.in);
-            System.out.println("Digite 0 no login para sair:");
-            System.out.println("Login:");
-            String login = s.nextLine().trim();
-            if (login.equals("0")) {
-                break;
-            }
-            System.out.println("Senha:");
-            String senha = s.nextLine().trim();
+    public LeitorEmail() throws RemoteException, MalformedURLException, NotBoundException {
+        super();
+    }
 
-            if (frontEmail.realizaLogin(login, senha)) {
-                return true;
+    public void leMultiplesEmails() throws RemoteException {
+        Scanner s = new Scanner(System.in);
+        while (true) {
+            System.out.println("1- Ler email | 0 Sair");
+            if (s.nextLine().trim().equals("0")) {
+                return;
             }
-            System.out.println("============== LOGIN ERRADO ==============");
+            Email email = frontEmail.leEmail(this.getLogin());
+            email.leEmail();
         }
-        return false;
+
     }
 
 }
+    

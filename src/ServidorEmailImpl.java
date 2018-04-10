@@ -53,7 +53,6 @@ public class ServidorEmailImpl extends java.rmi.server.UnicastRemoteObject imple
     }
 
     private static boolean emailEnviado() {
-        return Math.random() > 0.2;
+        return Math.random() > 0.1;
     }
-
 }

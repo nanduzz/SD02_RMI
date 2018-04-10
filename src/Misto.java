@@ -15,9 +15,9 @@ public class Misto {
     public Misto() {
 
         try {
-            ServidorEmail disparador = (ServidorEmail) Naming.lookup("//127.0.0.1:1099/ServidorEmail");
+            ServidorEmail disparador = (ServidorEmail) Naming.lookup("//127.0.0.1:1099/ServidorEmail");;;
             FrontEmailImpl frontEnd = new FrontEmailImpl(disparador);
-            Naming.rebind("//127.0.0.1:1099/FrontEndEmail", frontEnd);
+            Naming.rebind("//127.0.0.1:1099/FrontEndEmail", disparador);
         } catch (Exception e) {
             System.out.println(e);
         }
